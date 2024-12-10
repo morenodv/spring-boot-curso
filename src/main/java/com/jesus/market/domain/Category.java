@@ -3,7 +3,7 @@ package com.jesus.market.domain;
 public class Category {
     private int categoryId;
     private String category;
-    private Boolean active;
+    private boolean active;
 
     public int getCategoryId() {
         return categoryId;

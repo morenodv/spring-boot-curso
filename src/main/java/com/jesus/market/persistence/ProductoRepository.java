@@ -14,17 +14,17 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductoRepository implements ProductRepository {
 
-    @Autowired //decir a spring que los objetos que reciban esa anotacion, se cede el control a spring para que cree esas intancias
+    //decir a spring que los objetos que reciban esa anotacion, se cede el control a spring para que cree esas intancias
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
+
     @Autowired
     private ProductMapper mapper;
-
 
     @Override
     public List<Product> getAll() {
         List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
         return mapper.toProducts(productos);
-
     }
 
     @Override
@@ -50,12 +50,8 @@ public class ProductoRepository implements ProductRepository {
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
-
-
-
     @Override
     public void delete(int productId) {
         productoCrudRepository.deleteById(productId);
     }
-
 }

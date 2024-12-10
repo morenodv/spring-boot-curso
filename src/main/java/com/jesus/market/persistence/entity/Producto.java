@@ -1,21 +1,20 @@
 package com.jesus.market.persistence.entity;
-
+//import jakarta.persistence.*;
 
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "productos")
+@Table(name="productos")
 public class Producto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column( name = "id_producto")
+    @Column(name="id_producto")
     private Integer idProducto;
 
     private String nombre;
 
     @Column(name = "id_categoria")
-    private String idCategoria;
+    private Integer idCategoria;
 
     @Column(name = "codigo_barras")
     private String codigoBarras;
@@ -27,7 +26,6 @@ public class Producto {
     private Integer cantidadStock;
 
     private Boolean estado;
-
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
@@ -49,11 +47,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public String getIdCategoria() {
+    public Integer getIdCategoria() {
         return idCategoria;
     }
 
-    public void setIdCategoria(String idCategoria) {
+    public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
 
@@ -87,5 +85,13 @@ public class Producto {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

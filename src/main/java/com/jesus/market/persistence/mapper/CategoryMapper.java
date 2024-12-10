@@ -14,13 +14,10 @@ public interface CategoryMapper {
             @Mapping(source = "idCategoria", target = "categoryId"),
             @Mapping(source = "descripcion", target = "category"),
             @Mapping(source = "estado", target = "active"),
-    }
-
-    )
+    })
     Category toCategory(Categoria categoria);
 
-
-    @InheritInverseConfiguration //indica a mapsctruc que es la inversa a la anterior, no se define denuevo mappings
+    @InheritInverseConfiguration
     @Mapping(target = "productos", ignore = true)
     Categoria toCategoria(Category category);
 

@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -30,17 +31,19 @@ public class ProductService {
     }
 
     public boolean delete(int productId) {
-        if (getProduct(productId).isPresent()) {
+        return getProduct(productId).map(product -> {
             productRepository.delete(productId);
             return true;
-        } else {
-            return false;
-        }
-        
-//        return getProduct(productId).map( product -> {
-//            productRepository.delete(productId);
-//        return true;
-//        }).orElse(false);
+        }).orElse(false);
+
+//          /* OPCION 1
+//        *   if (getProduct(productId).isPresent()) {
+//        *       productRepository.delete(productId);
+//        *       return true;
+//        *   } else {
+//        *       return false;
+//        *   }
+//        * */
     }
 
 }

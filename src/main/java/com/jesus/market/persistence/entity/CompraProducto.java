@@ -1,6 +1,4 @@
 package com.jesus.market.persistence.entity;
-
-
 import jakarta.persistence.*;
 
 @Entity
@@ -11,9 +9,7 @@ public class CompraProducto {
     private CompraProductoPK id;
 
     private Integer cantidad;
-
     private Double total;
-
     private Boolean estado;
 
     @ManyToOne
